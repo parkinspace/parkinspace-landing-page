@@ -72,23 +72,24 @@
         <div class="card hero-card reveal">
           <div class="hero-card-head">
             <div>
-              <h3>Theatre lot · 60 slots</h3>
-              <small id="lotCaption">Weekday morning, no show running</small>
+              <h3>One neighbourhood, through the day</h3>
+              <small id="lotCaption">Residents leave for work, offices fill up</small>
             </div>
             <div class="seg" id="lotSeg" role="tablist" aria-label="Time of day">
-              <button class="active" data-mode="morning">Morning</button>
-              <button data-mode="show">Show time</button>
-              <button data-mode="night">Night</button>
+              <button class="active" data-mode="0">9 AM</button>
+              <button data-mode="1">2 PM</button>
+              <button data-mode="2">7 PM</button>
+              <button data-mode="3">11 PM</button>
             </div>
           </div>
-          <div class="lot" id="lot" aria-hidden="true"></div>
+          <div class="hood" id="hood"></div>
           <div class="hero-stats">
             <div class="stat"><span>Idle slots</span><strong id="statFree">0</strong></div>
-            <div class="stat"><span>Utilisation</span><strong id="statUtil">0%</strong></div>
-            <div class="stat"><span>Rentable / day</span><strong id="statRev">₹0</strong></div>
+            <div class="stat"><span>Of total parking</span><strong id="statUtil">0%</strong></div>
+            <div class="stat"><span>Most idle now</span><strong id="statTop" class="stat-text">—</strong></div>
           </div>
           <div class="legend">
-            <span><i style="background:var(--free)"></i>Idle — can be rented</span>
+            <span><i style="background:var(--free)"></i>Idle, can be rented</span>
             <span><i style="background:var(--busy)"></i>In use</span>
           </div>
         </div>
