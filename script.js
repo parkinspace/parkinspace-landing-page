@@ -56,45 +56,64 @@
     requestAnimationFrame(step);
   }
 
-  /* ---------- Hero lot simulation ---------- */
-  const lot = $("#lot");
-  if (lot) {
-    const TOTAL = 60;
-    const RATE = 25; // ₹ per hour
-    const modes = {
-      morning: { free: 46, hours: 6, caption: "Weekday morning, no show running" },
-      show:    { free: 6,  hours: 2, caption: "Evening show of a big release" },
-      night:   { free: 38, hours: 8, caption: "After the last show, overnight" },
-    };
-    const slots = [];
-    for (let i = 0; i < TOTAL; i++) {
-      const s = document.createElement("div");
-      s.className = "slot";
-      lot.appendChild(s);
-      slots.push(s);
-    }
-    const order = slots.map((_, i) => i).sort(() => Math.random() - 0.5);
+  /* ---------- Hero: neighbourhood through the day ---------- */
+  const hood = $("#hood");
+  if (hood) {
+    const PER = 12; // equal slots per space type, so no type looks primary
+    // Idle slots per type at [9 AM, 2 PM, 7 PM, 11 PM]
+    const spaces = [
+      { name: "Homes",      free: [9, 10, 3, 1] },
+      { name: "Apartments", free: [10, 11, 4, 1] },
+      { name: "Offices",    free: [2, 1, 7, 11] },
+      { name: "Theatres",   free: [8, 4, 1, 6] },
+      { name: "Malls",      free: [8, 3, 1, 10] },
+    ];
+    const captions = [
+      "Residents leave for work, offices fill up",
+      "Homes and apartments sit empty mid-day",
+      "Offices empty out as evening crowds arrive",
+      "Offices and malls are closed overnight",
+    ];
+    const TOTAL = PER * spaces.length;
 
-    function setMode(key) {
-      const m = modes[key];
-      order.forEach((idx, i) => {
-        setTimeout(() => slots[idx].classList.toggle("free", i < m.free), i * 8);
+    const rows = spaces.map((sp) => {
+      const row = document.createElement("div");
+      row.className = "hood-row";
+      row.innerHTML = `<span class="hood-name">${sp.name}</span><div class="hood-slots"></div><span class="hood-count">0/${PER}</span>`;
+      const strip = $(".hood-slots", row);
+      const slots = [];
+      for (let i = 0; i < PER; i++) {
+        const s = document.createElement("span");
+        strip.appendChild(s);
+        slots.push(s);
+      }
+      hood.appendChild(row);
+      return { slots, count: $(".hood-count", row) };
+    });
+
+    function setMode(t) {
+      let total = 0, top = spaces[0];
+      spaces.forEach((sp, i) => {
+        const n = sp.free[t];
+        total += n;
+        if (n > top.free[t]) top = sp;
+        rows[i].slots.forEach((s, j) => setTimeout(() => s.classList.toggle("free", j < n), j * 25 + i * 40));
+        rows[i].count.textContent = `${n}/${PER}`;
       });
-      $("#lotCaption").textContent = m.caption;
-      animateNumber($("#statFree"), m.free, (v) => Math.round(v));
-      animateNumber($("#statUtil"), Math.round(((TOTAL - m.free) / TOTAL) * 100), (v) => Math.round(v) + "%");
-      animateNumber($("#statRev"), m.free * m.hours * RATE, inr);
-      $$("#lotSeg button").forEach((b) => b.classList.toggle("active", b.dataset.mode === key));
+      $("#lotCaption").textContent = captions[t];
+      animateNumber($("#statFree"), total, (v) => Math.round(v));
+      animateNumber($("#statUtil"), Math.round((total / TOTAL) * 100), (v) => Math.round(v) + "%");
+      $("#statTop").textContent = top.name;
+      $$("#lotSeg button").forEach((b) => b.classList.toggle("active", +b.dataset.mode === t));
     }
 
-    $$("#lotSeg button").forEach((b) => b.addEventListener("click", () => { setMode(b.dataset.mode); stopAuto(); }));
+    $$("#lotSeg button").forEach((b) => b.addEventListener("click", () => { stopAuto(); setMode(+b.dataset.mode); }));
 
-    // Auto-cycle until user interacts
-    const keys = Object.keys(modes);
-    let ki = 0;
-    let timer = setInterval(() => { ki = (ki + 1) % keys.length; setMode(keys[ki]); }, 3800);
+    // Auto-cycle until the user interacts
+    let ti = 0;
+    let timer = setInterval(() => { ti = (ti + 1) % captions.length; setMode(ti); }, 3800);
     function stopAuto() { clearInterval(timer); timer = null; }
-    setMode("morning");
+    setMode(0);
   }
 
   /* ---------- Roles ---------- */
