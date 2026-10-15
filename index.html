@@ -1,1 +1,282 @@
-<h1>test</h1>
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ParkInSpace — Turn idle parking into income</title>
+  <meta name="description" content="ParkInSpace connects space owners with idle parking — homes, apartments, theatres, offices — to vehicle owners who need it." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () {
+      var t = localStorage.getItem("pis-theme") || "light";
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo" aria-label="ParkInSpace home">
+        <span class="logo-mark">P</span>
+        <span>ParkIn<span class="dim">Space</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#why">Why</a>
+        <a href="#how">How it works</a>
+        <a href="#partners">Partners</a>
+        <a href="#estimate">Estimate</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+        <a href="contact.html" class="btn btn-primary">Get in touch</a>
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <span class="badge"><span class="dot"></span>Currently in development</span>
+          <h1>Idle parking is <span class="accent">lost income.</span> We put it to work.</h1>
+          <p class="lead">
+            ParkInSpace connects space owners — homes, apartments, theatres, offices and more —
+            with vehicle owners who need a place to park, exactly when that space would otherwise sit empty.
+          </p>
+          <div class="hero-cta">
+            <a href="contact.html" class="btn btn-primary">
+              Partner with us
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#how" class="btn btn-ghost">How it works</a>
+          </div>
+          <div class="hero-meta">
+            <div><strong>Two roles</strong><span>Space owner &amp; vehicle owner</span></div>
+            <div><strong>Time-based</strong><span>Rent by the hour, day or month</span></div>
+            <div><strong>Any space</strong><span>From one slot to a full lot</span></div>
+          </div>
+        </div>
+
+        <div class="card hero-card reveal">
+          <div class="hero-card-head">
+            <div>
+              <h3>Theatre lot · 60 slots</h3>
+              <small id="lotCaption">Weekday morning, no show running</small>
+            </div>
+            <div class="seg" id="lotSeg" role="tablist" aria-label="Time of day">
+              <button class="active" data-mode="morning">Morning</button>
+              <button data-mode="show">Show time</button>
+              <button data-mode="night">Night</button>
+            </div>
+          </div>
+          <div class="lot" id="lot" aria-hidden="true"></div>
+          <div class="hero-stats">
+            <div class="stat"><span>Idle slots</span><strong id="statFree">0</strong></div>
+            <div class="stat"><span>Utilisation</span><strong id="statUtil">0%</strong></div>
+            <div class="stat"><span>Rentable / day</span><strong id="statRev">₹0</strong></div>
+          </div>
+          <div class="legend">
+            <span><i style="background:var(--free)"></i>Idle — can be rented</span>
+            <span><i style="background:var(--busy)"></i>In use</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why -->
+    <section class="section section-soft" id="why">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">The insight</span>
+          <h2>Most parking sits empty for most of the day.</h2>
+          <p>A theatre lot is full on a blockbuster weekend and nearly empty on a Tuesday morning. An apartment slot is empty from 9 to 6. We make that unused time rentable.</p>
+        </div>
+        <div class="insight-grid">
+          <div class="card insight reveal">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+            <h3>Demand changes by the hour</h3>
+            <p>Parking needs move between homes, offices, theatres and markets through the day. The supply just doesn't move with it.</p>
+          </div>
+          <div class="card insight reveal">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+            <h3>Owners earn from what they already have</h3>
+            <p>No construction and no new land. Space owners set the hours, the price and the rules, and earn while the space would otherwise be idle.</p>
+          </div>
+          <div class="card insight reveal">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <h3>Less street parking, less circling</h3>
+            <p>Vehicle owners get a confirmed slot instead of hunting for a spot. Neighbourhoods get less congestion.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">How it works</span>
+          <h2>One platform, two roles.</h2>
+          <p>Choose a role to see how ParkInSpace works for you.</p>
+        </div>
+
+        <div class="roles-switch reveal" role="tablist">
+          <button class="active" data-role="owner" role="tab" aria-selected="true">Space owner</button>
+          <button data-role="driver" role="tab" aria-selected="false">Vehicle owner</button>
+        </div>
+
+        <div class="role-panel active" data-panel="owner">
+          <div>
+            <h3>Earn from parking you aren't using.</h3>
+            <p>Whether it's a single slot in front of your house or a 300-slot theatre lot, you decide when it's available and at what price.</p>
+            <ul class="checklist">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Set availability by hour, day, or recurring schedule</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Control pricing, vehicle types and access rules</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Block dates instantly when you need the space back</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Verified vehicle owners and payouts direct to your account</li>
+            </ul>
+          </div>
+          <div class="steps">
+            <div class="card step"><div class="num">01</div><div><h4>List your space</h4><p>Add location, number of slots, photos and access instructions.</p></div></div>
+            <div class="card step"><div class="num">02</div><div><h4>Set when it's free</h4><p>Pick the hours your space is usually empty, or sync it with your own schedule.</p></div></div>
+            <div class="card step"><div class="num">03</div><div><h4>Approve and earn</h4><p>Bookings come in, the vehicle owner arrives with a pass, and you get paid.</p></div></div>
+          </div>
+        </div>
+
+        <div class="role-panel" data-panel="driver">
+          <div>
+            <h3>A confirmed slot, close to where you're going.</h3>
+            <p>Park in verified private spaces that would otherwise sit empty, often closer and cheaper than public parking.</p>
+            <ul class="checklist">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Book by the hour, day, or take a monthly pass</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Digital pass checked at the gate, no paperwork</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Clear pricing shown up front</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Spaces for cars, bikes and commercial fleets</li>
+            </ul>
+          </div>
+          <div class="steps">
+            <div class="card step"><div class="num">01</div><div><h4>Choose a space</h4><p>See verified spaces with available hours, price and access details.</p></div></div>
+            <div class="card step"><div class="num">02</div><div><h4>Reserve your time</h4><p>Pay securely and receive a time-limited digital pass.</p></div></div>
+            <div class="card step"><div class="num">03</div><div><h4>Park and go</h4><p>Show the pass at entry. Extend your time from your phone if needed.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners -->
+    <section class="section section-soft" id="partners">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Partner ideas</span>
+          <h2>Every kind of space has idle hours.</h2>
+          <p>Choose a partner type to see when their parking is usually free and what we can offer during those hours.</p>
+        </div>
+
+        <div class="tabs reveal" id="partnerTabs" role="tablist"></div>
+
+        <div class="card partner-panel reveal" id="partnerPanel">
+          <div class="partner-left">
+            <h3 id="pTitle"></h3>
+            <p class="tag" id="pTag"></p>
+            <div class="label">When the parking is free</div>
+            <p class="free-when" id="pFree"></p>
+            <div class="label">Typical 24-hour availability</div>
+            <div class="timeline" id="pTimeline"></div>
+            <div class="timeline-axis"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div>
+            <p class="timeline-note">Highlighted hours show when the space is typically idle.</p>
+          </div>
+          <div>
+            <div class="label">What to offer</div>
+            <ul class="offers" id="pOffers"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Estimator -->
+    <section class="section" id="estimate">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">For space owners</span>
+          <h2>Estimate what your idle space could earn.</h2>
+          <p>Move the sliders to get a rough idea. Real earnings depend on location and demand.</p>
+        </div>
+        <div class="card estimator reveal">
+          <div class="est-controls">
+            <div>
+              <div class="field-row"><label for="slots">Number of slots</label><output id="slotsOut">1</output></div>
+              <input type="range" id="slots" min="1" max="200" value="1" />
+            </div>
+            <div>
+              <div class="field-row"><label for="hours">Idle hours per day</label><output id="hoursOut">8 hrs</output></div>
+              <input type="range" id="hours" min="1" max="24" value="8" />
+            </div>
+            <div>
+              <div class="field-row"><label for="rate">Rate per hour</label><output id="rateOut">₹30</output></div>
+              <input type="range" id="rate" min="10" max="150" step="5" value="30" />
+            </div>
+            <div>
+              <div class="field-row"><label for="occ">Expected occupancy</label><output id="occOut">50%</output></div>
+              <input type="range" id="occ" min="10" max="100" step="5" value="50" />
+            </div>
+          </div>
+          <div class="est-result">
+            <div class="label">Estimated monthly earnings</div>
+            <div class="big" id="estMonthly">₹0</div>
+            <p class="sub">Based on 30 days at your settings</p>
+            <div class="est-break">
+              <div><span>Per day</span><strong id="estDay">₹0</strong></div>
+              <div><span>Booked hours / month</span><strong id="estHours">0</strong></div>
+              <div><span>Per year</span><strong id="estYear">₹0</strong></div>
+            </div>
+            <p class="disclaimer">Indicative only. Not a guarantee of income.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="card cta-band reveal">
+          <div>
+            <h2>Have a space we should partner with?</h2>
+            <p>We're onboarding early partners: theatres, apartments, offices and homeowners.</p>
+          </div>
+          <a href="contact.html" class="btn btn-primary">
+            Contact us
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="logo"><span class="logo-mark">P</span><span>ParkIn<span class="dim">Space</span></span></div>
+      <div class="footer-links">
+        <a href="#how">How it works</a>
+        <a href="#partners">Partners</a>
+        <a href="contact.html">Contact</a>
+        <a href="mailto:support@parkinspace.in">support@parkinspace.in</a>
+      </div>
+      <div>&copy; <span id="year"></span> ParkInSpace</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
