@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — ParkInSpace</title>
+  <meta name="description" content="Get in touch with ParkInSpace. Email support@parkinspace.in." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () {
+      var t = localStorage.getItem("pis-theme") || "light";
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
+</head>
+<body>
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo" aria-label="ParkInSpace home">
+        <span class="logo-mark">P</span>
+        <span>ParkIn<span class="dim">Space</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html#why">Why</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#partners">Partners</a>
+        <a href="index.html#estimate">Estimate</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+        <a href="index.html" class="btn btn-ghost">Back to home</a>
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="contact-wrap">
+    <div class="container contact-grid">
+      <div class="contact-info reveal">
+        <span class="eyebrow">Contact us</span>
+        <h1>Let's talk about your space.</h1>
+        <p>Whether you own a single slot or manage a theatre, apartment complex or office campus, we'd like to hear from you. We usually reply within one business day.</p>
+
+        <div class="card info-item">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></div>
+          <div>
+            <h4>Email</h4>
+            <a href="mailto:support@parkinspace.in">support@parkinspace.in</a>
+          </div>
+          <button class="icon-btn copy-btn" id="copyEmail" aria-label="Copy email address" title="Copy email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+        </div>
+
+        <div class="card info-item">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div>
+            <h4>Partnerships</h4>
+            <p>Theatres, apartments, offices, malls and more</p>
+          </div>
+        </div>
+
+        <div class="card info-item">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div>
+            <h4>Response time</h4>
+            <p>Within 1 business day</p>
+          </div>
+        </div>
+      </div>
+
+      <form class="card form reveal" id="contactForm" novalidate>
+        <div>
+          <label>I am a</label>
+          <div class="role-pick">
+            <input type="radio" name="role" id="rOwner" value="Space owner" checked />
+            <label for="rOwner">Space owner<small>I have parking to share</small></label>
+            <input type="radio" name="role" id="rDriver" value="Vehicle owner" />
+            <label for="rDriver">Vehicle owner<small>I need a place to park</small></label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="phone">Phone <span style="color:var(--muted);font-weight:400">(optional)</span></label>
+            <input id="phone" name="phone" type="tel" placeholder="+91" />
+          </div>
+          <div>
+            <label for="topic">Topic</label>
+            <select id="topic" name="topic">
+              <option>Partnership</option>
+              <option>List my space</option>
+              <option>Early access</option>
+              <option>General question</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us about your space or what you're looking for" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="justify-content:center">
+          Send message
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+        <p class="form-note">This opens your email app with the message addressed to support@parkinspace.in.</p>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="logo"><span class="logo-mark">P</span><span>ParkIn<span class="dim">Space</span></span></div>
+      <div class="footer-links">
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#partners">Partners</a>
+        <a href="mailto:support@parkinspace.in">support@parkinspace.in</a>
+      </div>
+      <div>&copy; <span id="year"></span> ParkInSpace</div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
