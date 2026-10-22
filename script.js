@@ -262,25 +262,24 @@
   /* ---------- Estimator ---------- */
   const slotsIn = $("#slots");
   if (slotsIn) {
-    const hoursIn = $("#hours"), rateIn = $("#rate"), occIn = $("#occ");
+    const hoursIn = $("#hours"), rateIn = $("#rate");
     const fill = (el) => {
       const p = ((el.value - el.min) / (el.max - el.min)) * 100;
       el.style.setProperty("--p", p + "%");
     };
     function calc() {
-      const s = +slotsIn.value, h = +hoursIn.value, r = +rateIn.value, o = +occIn.value / 100;
-      [slotsIn, hoursIn, rateIn, occIn].forEach(fill);
+      const s = +slotsIn.value, h = +hoursIn.value, r = +rateIn.value;
+      [slotsIn, hoursIn, rateIn].forEach(fill);
       $("#slotsOut").textContent = s;
       $("#hoursOut").textContent = h + (h === 1 ? " hr" : " hrs");
       $("#rateOut").textContent = inr(r);
-      $("#occOut").textContent = Math.round(o * 100) + "%";
-      const day = s * h * r * o;
+      const day = s * h * r;
       $("#estMonthly").textContent = inr(day * 30);
       $("#estDay").textContent = inr(day);
-      $("#estHours").textContent = Math.round(s * h * o * 30).toLocaleString("en-IN");
+      $("#estHours").textContent = (s * h * 30).toLocaleString("en-IN");
       $("#estYear").textContent = inr(day * 365);
     }
-    [slotsIn, hoursIn, rateIn, occIn].forEach((el) => el.addEventListener("input", calc));
+    [slotsIn, hoursIn, rateIn].forEach((el) => el.addEventListener("input", calc));
     calc();
   }
 
