@@ -80,7 +80,23 @@
         </div>
       </div>
 
-      <form class="card form reveal" id="contactForm" novalidate>
+      <div class="card form form-success reveal" id="formSuccess" hidden>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <h2>Thanks, you're on the list!</h2>
+        <p>We've received your details and will get back to you within one business day.</p>
+        <a href="index.html" class="btn btn-ghost">Back to home</a>
+      </div>
+
+      <form class="card form reveal" id="contactForm" action="https://crm.zoho.in/crm/WebToLeadForm" method="POST" accept-charset="UTF-8" novalidate>
+        <input type="hidden" name="xnQsjsdp" value="4debc16b7ab83df23e5c5c8adb94a329903d777ce32244ef89a40632687a22a3" />
+        <input type="hidden" name="zc_gad" value="" />
+        <input type="hidden" name="xmIwtLD" value="12636f33efc3ff4b5ddac6e7b90ea58939c31dc1c4b52fa3cc095f27119f43c3e412240a30bd809ae5719cd949ebf5e2" />
+        <input type="hidden" name="actionType" value="TGVhZHM=" />
+        <input type="hidden" name="returnURL" value="https://parkinspace.in/contact.html?sent=1" />
+        <input type="hidden" name="Company" value="Individual" />
+        <input type="hidden" name="Designation" id="zDesignation" value="" />
+        <input type="hidden" name="Description" id="zDescription" value="" />
+        <input type="text" name="aG9uZXlwb3Q" value="" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp" />
         <div>
           <label>I am a</label>
           <div class="role-pick">
@@ -93,17 +109,17 @@
         <div class="form-row">
           <div>
             <label for="name">Full name</label>
-            <input id="name" name="name" type="text" placeholder="Your name" required />
+            <input id="name" name="Last Name" type="text" placeholder="Your name" maxlength="80" autocomplete="name" required />
           </div>
           <div>
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+            <input id="email" name="Email" type="email" placeholder="you@example.com" maxlength="100" autocomplete="email" required />
           </div>
         </div>
         <div class="form-row">
           <div>
             <label for="phone">Phone <span style="color:var(--muted);font-weight:400">(optional)</span></label>
-            <input id="phone" name="phone" type="tel" placeholder="+91" />
+            <input id="phone" name="Phone" type="tel" placeholder="+91" maxlength="30" autocomplete="tel" />
           </div>
           <div>
             <label for="topic">Topic</label>
@@ -123,7 +139,7 @@
           Send message
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </button>
-        <p class="form-note">This opens your email app with the message addressed to support@parkinspace.in.</p>
+        <p class="form-note">Your details go straight to the ParkInSpace team. We'll only use them to get back to you.</p>
       </form>
     </div>
   </main>

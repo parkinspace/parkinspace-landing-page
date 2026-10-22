@@ -381,6 +381,13 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; }
 .role-pick label small { display: block; font-weight: 400; color: var(--muted); font-size: 12px; margin-top: 2px; }
 .role-pick input:checked + label { border-color: var(--accent); background: var(--accent-soft); }
 .form-note { font-size: 13px; color: var(--muted); margin: 0; }
+.form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.form-success { text-align: center; justify-items: center; align-content: center; }
+.form[hidden] { display: none; }
+.form-success .ico { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: color-mix(in srgb, var(--free) 15%, transparent); color: var(--pill-free); }
+.form-success .ico svg { width: 28px; height: 28px; }
+.form-success h2 { margin: 0; font-size: 24px; letter-spacing: -0.02em; }
+.form-success p { margin: 0; color: var(--muted); }
 .toast {
   position: fixed; bottom: 24px; left: 50%; transform: translate(-50%, 20px);
   background: var(--text); color: var(--bg); padding: 12px 18px; border-radius: 10px; font-size: 14px;

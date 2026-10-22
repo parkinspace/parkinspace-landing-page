@@ -306,23 +306,26 @@
 
   const form = $("#contactForm");
   if (form) {
-    const role = new URLSearchParams(location.search).get("role");
+    const params = new URLSearchParams(location.search);
+    if (params.get("sent") === "1") {
+      form.hidden = true;
+      $("#formSuccess").hidden = false;
+    }
+    const role = params.get("role");
     if (role === "owner" || role === "driver") {
       $(role === "owner" ? "#rOwner" : "#rDriver").checked = true;
       $("#topic").value = role === "owner" ? "List my space" : "Early access";
     }
+    // Submits as a normal POST to Zoho CRM's Web-to-Lead endpoint, which redirects back with ?sent=1.
     form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (!form.reportValidity()) return;
+      if (!form.reportValidity()) { e.preventDefault(); return; }
       const d = new FormData(form);
-      const subject = `[${d.get("role")}] ${d.get("topic")} — ${d.get("name")}`;
-      const body =
-        `Name: ${d.get("name")}\nEmail: ${d.get("email")}\nPhone: ${d.get("phone") || "-"}\n` +
-        `Role: ${d.get("role")}\nTopic: ${d.get("topic")}\n\n${d.get("message")}`;
-      window.location.href =
-        "mailto:support@parkinspace.in?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(body);
-      showToast("Opening your email app…");
+      $("#zDesignation").value = d.get("role");
+      $("#zDescription").value =
+        `Role: ${d.get("role")}\nTopic: ${d.get("topic")}\nSource: parkinspace.in contact form\n\n${d.get("message")}`;
+      const btn = form.querySelector('[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = "Sending…";
     });
   }
 })();
